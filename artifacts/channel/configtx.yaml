@@ -3,7 +3,7 @@ Organizations:
     - &OrdererOrg
         Name: OrdererOrg
         ID: OrdererMSP
-        MSPDir: ../../setup1/vm4/crypto-config/ordererOrganizations/example.com/msp
+        MSPDir: ../../setup1/orderer/crypto-config/ordererOrganizations/thesis.com/msp
 
         Policies:
             Readers:
@@ -16,79 +16,56 @@ Organizations:
                 Type: Signature
                 Rule: "OR('OrdererMSP.admin')"
 
-    - &Org1
-        Name: Org1MSP
-        ID: Org1MSP
+    - &thayson
+        Name: thaysonMSP
+        ID: thaysonMSP
 
-        MSPDir: ../../setup1/vm1/crypto-config/peerOrganizations/org1.example.com/msp
+        MSPDir: ../../setup1/thayson/crypto-config/peerOrganizations/thayson.thesis.com/msp
 
         Policies:
             Readers:
                 Type: Signature
-                Rule: "OR('Org1MSP.admin', 'Org1MSP.peer', 'Org1MSP.client')"
+                Rule: "OR('thaysonMSP.admin', 'thaysonMSP.peer', 'thaysonMSP.client')"
             Writers:
                 Type: Signature
-                Rule: "OR('Org1MSP.admin', 'Org1MSP.client')"
+                Rule: "OR('thaysonMSP.admin', 'thaysonMSP.client')"
             Admins:
                 Type: Signature
-                Rule: "OR('Org1MSP.admin')"
+                Rule: "OR('thaysonMSP.admin')"
             Endorsement:
                 Type: Signature
-                Rule: "OR('Org1MSP.peer')"
+                Rule: "OR('thaysonMSP.peer')"
 
         AnchorPeers:
-            - Host: peer0.org1.example.com
+            - Host: peer0.thayson.thesis.com
               Port: 7051
 
-    - &Org2
-        Name: Org2MSP
+    - &cohuong
+        Name: cohuongMSP
 
-        ID: Org2MSP
+        ID: cohuongMSP
 
-        MSPDir: ../../setup1/vm2/crypto-config/peerOrganizations/org2.example.com/msp
+        MSPDir: ../../setup1/cohuong/crypto-config/peerOrganizations/cohuong.thesis.com/msp
 
         Policies:
             Readers:
                 Type: Signature
-                Rule: "OR('Org2MSP.admin', 'Org2MSP.peer', 'Org2MSP.client')"
+                Rule: "OR('cohuongMSP.admin', 'cohuongMSP.peer', 'cohuongMSP.client')"
             Writers:
                 Type: Signature
-                Rule: "OR('Org2MSP.admin', 'Org2MSP.client')"
+                Rule: "OR('cohuongMSP.admin', 'cohuongMSP.client')"
             Admins:
                 Type: Signature
-                Rule: "OR('Org2MSP.admin')"
+                Rule: "OR('cohuongMSP.admin')"
             Endorsement:
                 Type: Signature
-                Rule: "OR('Org2MSP.peer')"
+                Rule: "OR('cohuongMSP.peer')"
 
         AnchorPeers:
-            - Host: peer0.org2.example.com
+            - Host: peer0.cohuong.thesis.com
               Port: 9051
 
-    - &Org3
-        Name: Org3MSP
-
-        ID: Org3MSP
-
-        MSPDir: ../../setup1/vm3/crypto-config/peerOrganizations/org3.example.com/msp
-
-        Policies:
-            Readers:
-                Type: Signature
-                Rule: "OR('Org3MSP.admin', 'Org3MSP.peer', 'Org3MSP.client')"
-            Writers:
-                Type: Signature
-                Rule: "OR('Org3MSP.admin', 'Org3MSP.client')"
-            Admins:
-                Type: Signature
-                Rule: "OR('Org3MSP.admin')"
-            Endorsement:
-                Type: Signature
-                Rule: "OR('Org3MSP.peer')"
-
-        AnchorPeers:
-            - Host: peer0.org3.example.com
-              Port: 11051
+    
 
 Capabilities:
     Channel: &ChannelCapabilities
@@ -130,12 +107,12 @@ Orderer: &OrdererDefaults
 
     EtcdRaft:
         Consenters:
-        - Host: orderer.example.com
+        - Host: orderer.thesis.com
           Port: 7050
-          ClientTLSCert: ../../setup1/vm4/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
-          ServerTLSCert: ../../setup1/vm4/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
+          ClientTLSCert: ../../setup1/orderer/crypto-config/ordererOrganizations/thesis.com/orderers/orderer.thesis.com/tls/server.crt
+          ServerTLSCert: ../../setup1/orderer/crypto-config/ordererOrganizations/thesis.com/orderers/orderer.thesis.com/tls/server.crt
     Addresses:
-        - orderer.example.com:7050
+        - orderer.thesis.com:7050
 
     BatchTimeout: 2s
     BatchSize:
@@ -181,9 +158,8 @@ Profiles:
         Application:
             <<: *ApplicationDefaults
             Organizations:
-                - *Org1
-                - *Org2
-                - *Org3
+                - *thayson
+                - *cohuong
             Capabilities:
                 <<: *ApplicationCapabilities
 
@@ -196,22 +172,22 @@ Profiles:
             OrdererType: etcdraft
             EtcdRaft:
                 Consenters:
-                - Host: orderer.example.com
+                - Host: orderer.thesis.com
                   Port: 7050
-                  ClientTLSCert: ../../setup1/vm4/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
-                  ServerTLSCert: ../../setup1/vm4/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
-                - Host: orderer2.example.com
+                  ClientTLSCert: ../../setup1/orderer/crypto-config/ordererOrganizations/thesis.com/orderers/orderer.thesis.com/tls/server.crt
+                  ServerTLSCert: ../../setup1/orderer/crypto-config/ordererOrganizations/thesis.com/orderers/orderer.thesis.com/tls/server.crt
+                - Host: orderer2.thesis.com
                   Port: 8050
-                  ClientTLSCert: ../../setup1/vm4/crypto-config/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/server.crt
-                  ServerTLSCert: ../../setup1/vm4/crypto-config/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/server.crt
-                - Host: orderer3.example.com
+                  ClientTLSCert: ../../setup1/orderer/crypto-config/ordererOrganizations/thesis.com/orderers/orderer2.thesis.com/tls/server.crt
+                  ServerTLSCert: ../../setup1/orderer/crypto-config/ordererOrganizations/thesis.com/orderers/orderer2.thesis.com/tls/server.crt
+                - Host: orderer3.thesis.com
                   Port: 9050
-                  ClientTLSCert: ../../setup1/vm4/crypto-config/ordererOrganizations/example.com/orderers/orderer3.example.com/tls/server.crt
-                  ServerTLSCert: ../../setup1/vm4/crypto-config/ordererOrganizations/example.com/orderers/orderer3.example.com/tls/server.crt
+                  ClientTLSCert: ../../setup1/orderer/crypto-config/ordererOrganizations/thesis.com/orderers/orderer3.thesis.com/tls/server.crt
+                  ServerTLSCert: ../../setup1/orderer/crypto-config/ordererOrganizations/thesis.com/orderers/orderer3.thesis.com/tls/server.crt
             Addresses:
-                - orderer.example.com:7050
-                - orderer2.example.com:8050
-                - orderer3.example.com:9050
+                - orderer.thesis.com:7050
+                - orderer2.thesis.com:8050
+                - orderer3.thesis.com:9050
 
             Organizations:
             - *OrdererOrg
@@ -220,6 +196,5 @@ Profiles:
         Consortiums:
             SampleConsortium:
                 Organizations:
-                - *Org1
-                - *Org2
-                - *Org3
+                - *thayson
+                - *cohuong
