@@ -73,6 +73,14 @@ services:
       - ./:/etc/hyperledger/channel/
     networks:
       - thesis
+    # extra_hosts:
+    #   - "orderer.thesis.com:35.223.189.30"
+    #   - "orderer2.thesis.com:35.223.189.30"
+    #   - "orderer3.thesis.com:35.223.189.30"
+    #   - "peer0.thayson.thesis.com:35.223.189.30"
+    #   - "peer1.thayson.thesis.com:35.223.189.30"
+    #   - "peer0.cohuong.thesis.com:35.223.189.30"
+    #   - "peer1.cohuong.thesis.com:35.223.189.30"
 
   peer1.thayson.thesis.com:
     container_name: peer1.thayson.thesis.com
@@ -115,6 +123,14 @@ services:
       - ./:/etc/hyperledger/channel/
     networks:
       - thesis
+    # extra_hosts:
+    #   - "orderer.thesis.com:35.223.189.30"
+    #   - "orderer2.thesis.com:35.223.189.30"
+    #   - "orderer3.thesis.com:35.223.189.30"
+    #   - "peer0.thayson.thesis.com:35.223.189.30"
+    #   - "peer1.thayson.thesis.com:35.223.189.30"
+    #   - "peer0.cohuong.thesis.com:35.223.189.30"
+    #   - "peer1.cohuong.thesis.com:35.223.189.30"
 
   cli:
     container_name: cli
@@ -144,5 +160,5 @@ services:
       - /var/run/:/host/var/run/
       # - ./crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
       - ./crypto-config/peerOrganizations/thayson.thesis.com/:/etc/hyperledger/channel/crypto-config/peerOrganizations/thayson.thesis.com/
-      - ./../vm2/crypto-config/peerOrganizations/cohuong.thesis.com/:/etc/hyperledger/channel/crypto-config/peerOrganizations/cohuong.thesis.com/
-      - ./../vm4/crypto-config/ordererOrganizations/thesis.com/:/etc/hyperledger/channel/crypto-config/ordererOrganizations/thesis.com/
+      - ./../cohuong/crypto-config/peerOrganizations/cohuong.thesis.com/:/etc/hyperledger/channel/crypto-config/peerOrganizations/cohuong.thesis.com/
+      - ./../orderer/crypto-config/ordererOrganizations/thesis.com/:/etc/hyperledger/channel/crypto-config/ordererOrganizations/thesis.com/

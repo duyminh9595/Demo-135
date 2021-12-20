@@ -1,7 +1,7 @@
 version: '2'
 
 networks:
-  test:
+  thesis:
 
 services:
 
@@ -19,4 +19,4 @@ services:
       - ./fabric-ca/ordererOrg:/etc/hyperledger/fabric-ca-server
     container_name: ca_orderer
     networks:
-      - test
+      - thesis

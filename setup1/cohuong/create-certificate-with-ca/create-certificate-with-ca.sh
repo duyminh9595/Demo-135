@@ -11,16 +11,16 @@ createCertificateForcohuong() {
   echo 'NodeOUs:
   Enable: true
   ClientOUIdentifier:
-    Certificate: cacerts/localhost-8054-ca-cohuong-example-com.pem
+    Certificate: cacerts/localhost-8054-ca-cohuong-thesis-com.pem
     OrganizationalUnitIdentifier: client
   PeerOUIdentifier:
-    Certificate: cacerts/localhost-8054-ca-cohuong-example-com.pem
+    Certificate: cacerts/localhost-8054-ca-cohuong-thesis-com.pem
     OrganizationalUnitIdentifier: peer
   AdminOUIdentifier:
-    Certificate: cacerts/localhost-8054-ca-cohuong-example-com.pem
+    Certificate: cacerts/localhost-8054-ca-cohuong-thesis-com.pem
     OrganizationalUnitIdentifier: admin
   OrdererOUIdentifier:
-    Certificate: cacerts/localhost-8054-ca-cohuong-example-com.pem
+    Certificate: cacerts/localhost-8054-ca-cohuong-thesis-com.pem
     OrganizationalUnitIdentifier: orderer' >${PWD}/../crypto-config/peerOrganizations/cohuong.thesis.com/msp/config.yaml
 
   echo
