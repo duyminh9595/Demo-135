@@ -1,5 +1,5 @@
 export CORE_PEER_TLS_ENABLED=true
-export ORDERER_CA=${PWD}/../vm4/crypto-config/ordererOrganizations/thesis.com/orderers/orderer.thesis.com/msp/tlscacerts/tlsca.thesis.com-cert.pem
+export ORDERER_CA=${PWD}/../orderer/crypto-config/ordererOrganizations/thesis.com/orderers/orderer.thesis.com/msp/tlscacerts/tlsca.thesis.com-cert.pem
 export PEER0_cohuong_CA=${PWD}/crypto-config/peerOrganizations/cohuong.thesis.com/peers/peer0.cohuong.thesis.com/tls/ca.crt
 export FABRIC_CFG_PATH=${PWD}/../../artifacts/channel/config/
 
@@ -31,9 +31,9 @@ presetup() {
 # presetup
 
 CHANNEL_NAME="mychannel"
-CC_RUNTIME_LANGUAGE="node"
+CC_RUNTIME_LANGUAGE="golang"
 VERSION="1"
-CC_SRC_PATH="./../../artifacts/src/chaincode"
+CC_SRC_PATH="./../../artifacts/src/github.com/fabcar/go"
 CC_NAME="fabcar"
 
 packageChaincode() {

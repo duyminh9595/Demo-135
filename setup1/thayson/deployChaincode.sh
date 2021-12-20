@@ -45,12 +45,12 @@ presetup() {
     popd
     echo Finished vendoring Go dependencies
 }
-# presetup
+presetup
 
 CHANNEL_NAME="mychannel"
-CC_RUNTIME_LANGUAGE="node"
+CC_RUNTIME_LANGUAGE="golang"
 VERSION="1"
-CC_SRC_PATH="./../../artifacts/src/chaincode"
+CC_SRC_PATH="./../../artifacts/src/github.com/fabcar/go"
 CC_NAME="fabcar"
 
 packageChaincode() {
@@ -113,12 +113,11 @@ checkCommitReadyness
 
 commitChaincodeDefination() {
     setGlobalsForPeer0thayson
-    peer lifecycle chaincode commit -o localhost:7050 --ordererTLSHostnameOverride orderer.thesis.com \
+    peer lifecycle chaincode commit -o 35.223.189.30:7050 --ordererTLSHostnameOverride orderer.thesis.com \
         --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA \
         --channelID $CHANNEL_NAME --name ${CC_NAME} \
-        --peerAddresses localhost:7051 --tlsRootCertFiles $PEER0_thayson_CA \
-        --peerAddresses localhost:9051 --tlsRootCertFiles $PEER0_cohuong_CA \
-        --peerAddresses localhost:11051 --tlsRootCertFiles $PEER0_ORG3_CA \
+        --peerAddresses 35.223.189.30:7051 --tlsRootCertFiles $PEER0_thayson_CA \
+        --peerAddresses 35.224.153.140:9051 --tlsRootCertFiles $PEER0_cohuong_CA \
         --version ${VERSION} --sequence ${VERSION} --init-required
 }
 
