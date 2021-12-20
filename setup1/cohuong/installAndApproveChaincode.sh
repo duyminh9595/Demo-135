@@ -28,13 +28,13 @@ presetup() {
     popd
     echo Finished vendoring Go dependencies
 }
-presetup
+# presetup
 
 CHANNEL_NAME="mychannel"
-CC_RUNTIME_LANGUAGE="golang"
+CC_RUNTIME_LANGUAGE="node"
 VERSION="1"
-CC_SRC_PATH="./../../artifacts/src/github.com/fabcar/go"
-CC_NAME="fabcar"
+CC_SRC_PATH="./../../artifacts/chaincode"
+CC_NAME="thesis"
 
 packageChaincode() {
     rm -rf ${CC_NAME}.tar.gz
@@ -71,7 +71,7 @@ approveForMycohuong() {
     setGlobalsForPeer0cohuong
 
     # Replace localhost with your orderer's vm IP address
-    peer lifecycle chaincode approveformyorg -o 34.71.102.58:7050 \
+    peer lifecycle chaincode approveformyorg -o 104.197.116.180:7050 \
         --ordererTLSHostnameOverride orderer.thesis.com --tls $CORE_PEER_TLS_ENABLED \
         --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name ${CC_NAME} \
         --version ${VERSION} --init-required --package-id ${PACKAGE_ID} \
