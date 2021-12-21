@@ -1,13 +1,13 @@
 version: "2.1"
 
 networks:
-  test:
+  thesis:
 
 services:
   api:
     image: api:1.0
     build: .
     networks:
-      - test
+      - thesis
     ports:
       - 4000:4000

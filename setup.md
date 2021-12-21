@@ -4,10 +4,10 @@ docker rm -vf $(docker ps -aq) && docker volume prune -f
 docker network prune
 
 # docker swarm
-cohuong: sv api 34.71.102.58
-thayson orderer: dm org 34.71.102.58
-docker swarm init --advertise-addr 34.71.102.58
-docker swarm join --token SWMTKN-1-0lnxed7tro9a8yyqejh8dkuoolsnw6kv0qskxvna67ia1u521x-e01tfxtaq6kvevl1ymk1rg62f 34.71.102.58:2377 --advertise-addr 34.71.102.58
+cohuong: 34.71.102.58
+thayson orderer: dm org 34.68.51.202
+docker swarm init --advertise-addr 34.68.51.202
+docker swarm join --token SWMTKN-1-0n7v0e0g5m0roxslipqvho0zv0hecy8dfvznqxqi3kafvcpac5-73byqmz9vyuya9el5ea9bycys 34.68.51.202:2377 --advertise-addr 34.71.102.58
 docker network create --attachable --driver overlay artifacts_thesis
 
 # remove ca

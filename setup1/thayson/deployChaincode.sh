@@ -45,13 +45,14 @@ presetup() {
     popd
     echo Finished vendoring Go dependencies
 }
-# presetup
+presetup
 
 CHANNEL_NAME="mychannel"
-CC_RUNTIME_LANGUAGE="node"
+CC_RUNTIME_LANGUAGE="golang"
 VERSION="1"
-CC_SRC_PATH="./../../artifacts/src/chaincode"
-CC_NAME="thesis"
+CC_SRC_PATH="./../../artifacts/src/github.com/fabcar/go"
+CC_NAME="fabcar"
+
 
 packageChaincode() {
     rm -rf ${CC_NAME}.tar.gz
@@ -87,7 +88,7 @@ approveForMythayson() {
     setGlobalsForPeer0thayson
     # set -x
     # Replace localhost with your orderer's vm IP address
-    peer lifecycle chaincode approveformyorg -o 104.197.116.180:7050 \
+    peer lifecycle chaincode approveformyorg -o 34.68.51.202:7050 \
         --ordererTLSHostnameOverride orderer.thesis.com --tls \
         --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name ${CC_NAME} --version ${VERSION} \
         --init-required --package-id ${PACKAGE_ID} \

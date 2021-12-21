@@ -1,8 +1,8 @@
 {
-    "name": "first-network-org1",
+    "name": "first-network-thayson",
     "version": "1.0.0",
     "client": {
-        "organization": "Org1",
+        "organization": "thayson",
         "connection": {
             "timeout": {
                 "peer": {
@@ -12,47 +12,45 @@
         }
     },
     "organizations": {
-        "Org1": {
-            "mspid": "Org1MSP",
+        "thayson": {
+            "mspid": "thaysonMSP",
             "peers": [
-                "peer0.org1.example.com",
-                "peer1.org1.example.com"
+                "peer0.thayson.thesis.com",
+                "peer1.thayson.thesis.com"
             ],
             "certificateAuthorities": [
-                "ca.org1.example.com"
+                "ca.thayson.thesis.com"
             ]
         }
     },
     "peers": {
-        "peer0.org1.example.com": {
-            "url": "grpcs://peer0.org1.example.com:7051",
+        "peer0.thayson.thesis.com": {
+            "url": "grpcs://peer0.thayson.thesis.com:7051",
             "tlsCACerts": {
-                "pem": "-----BEGIN CERTIFICATE-----\nMIICFjCCAb2gAwIBAgIUPRBEgadlSQuqKDSa3Bo1WRtdDRUwCgYIKoZIzj0EAwIw\naDELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK\nEwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRkwFwYDVQQDExBmYWJyaWMt\nY2Etc2VydmVyMB4XDTIwMDkyMzA1NDQwMFoXDTM1MDkyMDA1NDQwMFowaDELMAkG\nA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBl\ncmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRkwFwYDVQQDExBmYWJyaWMtY2Etc2Vy\ndmVyMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEvgjDNO0KSmdcZCcbA3l+M66w\nXR304zSgVVotZjT0WMnJNKq4cH31aqeZ8jNkbnmZESBp20+VlOOMcXB3e3J7cKNF\nMEMwDgYDVR0PAQH/BAQDAgEGMBIGA1UdEwEB/wQIMAYBAf8CAQEwHQYDVR0OBBYE\nFC/vJR248sAf0XMPYZH0stEIi09RMAoGCCqGSM49BAMCA0cAMEQCIDr9QsFVDbnN\n6WsD39D9YkkxBVZum7WCngw0/O8qOzKPAiB/h5g01SUw71HNYV/TfYvTe0CYphWN\nbzYLyxp+GvDQqw==\n-----END CERTIFICATE-----\n"
+                "pem": "-----BEGIN CERTIFICATE-----\nMIICFzCCAb2gAwIBAgIUEb3m+3gbMngscNAvp0nRWVA9uWQwCgYIKoZIzj0EAwIw\naDELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK\nEwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRkwFwYDVQQDExBmYWJyaWMt\nY2Etc2VydmVyMB4XDTIxMTIyMTAyMDcwMFoXDTM2MTIxNzAyMDcwMFowaDELMAkG\nA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBl\ncmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRkwFwYDVQQDExBmYWJyaWMtY2Etc2Vy\ndmVyMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEeOyWnkSHsaMdAxPbn+SmMZsf\nv5IkwzLbWT5xD77keMIOnsj0/uNtYUqTkZPpPs2BpwxsHqBgfsGZH28Nx6T9aKNF\nMEMwDgYDVR0PAQH/BAQDAgEGMBIGA1UdEwEB/wQIMAYBAf8CAQEwHQYDVR0OBBYE\nFKR6ltpMUVaeZaMiaB7RAuQJLNBFMAoGCCqGSM49BAMCA0gAMEUCIQCeGve1wuHI\nxPRYMNEwP8x8cYVIXuCoyfN/7e4zl+nd1wIgaasu9BmFlmQgL9m25IG46+ETI5Oz\n1U7IShh9mu2RIks=\n-----END CERTIFICATE-----\n"
             },
             "grpcOptions": {
-                "ssl-target-name-override": "peer0.org1.example.com",
-                "hostnameOverride": "peer0.org1.example.com"
+                "ssl-target-name-override": "peer0.thayson.thesis.com",
+                "hostnameOverride": "peer0.thayson.thesis.com"
             }
         },
-	"peer1.org1.example.com": {
-            "url": "grpcs://peer1.org1.example.com:8051",
+        "peer1.thayson.thesis.com": {
+            "url": "grpcs://peer1.thayson.thesis.com:8051",
             "tlsCACerts": {
-                "pem": "-----BEGIN CERTIFICATE-----\nMIICFjCCAb2gAwIBAgIUPRBEgadlSQuqKDSa3Bo1WRtdDRUwCgYIKoZIzj0EAwIw\naDELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK\nEwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRkwFwYDVQQDExBmYWJyaWMt\nY2Etc2VydmVyMB4XDTIwMDkyMzA1NDQwMFoXDTM1MDkyMDA1NDQwMFowaDELMAkG\nA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBl\ncmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRkwFwYDVQQDExBmYWJyaWMtY2Etc2Vy\ndmVyMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEvgjDNO0KSmdcZCcbA3l+M66w\nXR304zSgVVotZjT0WMnJNKq4cH31aqeZ8jNkbnmZESBp20+VlOOMcXB3e3J7cKNF\nMEMwDgYDVR0PAQH/BAQDAgEGMBIGA1UdEwEB/wQIMAYBAf8CAQEwHQYDVR0OBBYE\nFC/vJR248sAf0XMPYZH0stEIi09RMAoGCCqGSM49BAMCA0cAMEQCIDr9QsFVDbnN\n6WsD39D9YkkxBVZum7WCngw0/O8qOzKPAiB/h5g01SUw71HNYV/TfYvTe0CYphWN\nbzYLyxp+GvDQqw==\n-----END CERTIFICATE-----\n"
+                "pem": "-----BEGIN CERTIFICATE-----\nMIICFzCCAb2gAwIBAgIUEb3m+3gbMngscNAvp0nRWVA9uWQwCgYIKoZIzj0EAwIw\naDELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK\nEwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRkwFwYDVQQDExBmYWJyaWMt\nY2Etc2VydmVyMB4XDTIxMTIyMTAyMDcwMFoXDTM2MTIxNzAyMDcwMFowaDELMAkG\nA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBl\ncmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRkwFwYDVQQDExBmYWJyaWMtY2Etc2Vy\ndmVyMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEeOyWnkSHsaMdAxPbn+SmMZsf\nv5IkwzLbWT5xD77keMIOnsj0/uNtYUqTkZPpPs2BpwxsHqBgfsGZH28Nx6T9aKNF\nMEMwDgYDVR0PAQH/BAQDAgEGMBIGA1UdEwEB/wQIMAYBAf8CAQEwHQYDVR0OBBYE\nFKR6ltpMUVaeZaMiaB7RAuQJLNBFMAoGCCqGSM49BAMCA0gAMEUCIQCeGve1wuHI\nxPRYMNEwP8x8cYVIXuCoyfN/7e4zl+nd1wIgaasu9BmFlmQgL9m25IG46+ETI5Oz\n1U7IShh9mu2RIks=\n-----END CERTIFICATE-----\n"
             },
             "grpcOptions": {
-                "ssl-target-name-override": "peer1.org1.example.com",
-                "hostnameOverride": "peer1.org1.example.com"
+                "ssl-target-name-override": "peer1.thayson.thesis.com",
+                "hostnameOverride": "peer1.thayson.thesis.com"
             }
         }
-
-	
     },
     "certificateAuthorities": {
-        "ca.org1.example.com": {
-            "url": "https://ca.org1.example.com:7054",
-            "caName": "ca.org1.example.com",
+        "ca.thayson.thesis.com": {
+            "url": "https://ca.thayson.thesis.com:7054",
+            "caName": "ca.thayson.thesis.com",
             "tlsCACerts": {
-                "pem": "-----BEGIN CERTIFICATE-----\nMIICFjCCAb2gAwIBAgIUPRBEgadlSQuqKDSa3Bo1WRtdDRUwCgYIKoZIzj0EAwIw\naDELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK\nEwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRkwFwYDVQQDExBmYWJyaWMt\nY2Etc2VydmVyMB4XDTIwMDkyMzA1NDQwMFoXDTM1MDkyMDA1NDQwMFowaDELMAkG\nA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBl\ncmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRkwFwYDVQQDExBmYWJyaWMtY2Etc2Vy\ndmVyMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEvgjDNO0KSmdcZCcbA3l+M66w\nXR304zSgVVotZjT0WMnJNKq4cH31aqeZ8jNkbnmZESBp20+VlOOMcXB3e3J7cKNF\nMEMwDgYDVR0PAQH/BAQDAgEGMBIGA1UdEwEB/wQIMAYBAf8CAQEwHQYDVR0OBBYE\nFC/vJR248sAf0XMPYZH0stEIi09RMAoGCCqGSM49BAMCA0cAMEQCIDr9QsFVDbnN\n6WsD39D9YkkxBVZum7WCngw0/O8qOzKPAiB/h5g01SUw71HNYV/TfYvTe0CYphWN\nbzYLyxp+GvDQqw==\n-----END CERTIFICATE-----\n"
+                "pem": "-----BEGIN CERTIFICATE-----\nMIICFzCCAb2gAwIBAgIUEb3m+3gbMngscNAvp0nRWVA9uWQwCgYIKoZIzj0EAwIw\naDELMAkGA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQK\nEwtIeXBlcmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRkwFwYDVQQDExBmYWJyaWMt\nY2Etc2VydmVyMB4XDTIxMTIyMTAyMDcwMFoXDTM2MTIxNzAyMDcwMFowaDELMAkG\nA1UEBhMCVVMxFzAVBgNVBAgTDk5vcnRoIENhcm9saW5hMRQwEgYDVQQKEwtIeXBl\ncmxlZGdlcjEPMA0GA1UECxMGRmFicmljMRkwFwYDVQQDExBmYWJyaWMtY2Etc2Vy\ndmVyMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEeOyWnkSHsaMdAxPbn+SmMZsf\nv5IkwzLbWT5xD77keMIOnsj0/uNtYUqTkZPpPs2BpwxsHqBgfsGZH28Nx6T9aKNF\nMEMwDgYDVR0PAQH/BAQDAgEGMBIGA1UdEwEB/wQIMAYBAf8CAQEwHQYDVR0OBBYE\nFKR6ltpMUVaeZaMiaB7RAuQJLNBFMAoGCCqGSM49BAMCA0gAMEUCIQCeGve1wuHI\nxPRYMNEwP8x8cYVIXuCoyfN/7e4zl+nd1wIgaasu9BmFlmQgL9m25IG46+ETI5Oz\n1U7IShh9mu2RIks=\n-----END CERTIFICATE-----\n"
             },
             "httpOptions": {
                 "verify": false

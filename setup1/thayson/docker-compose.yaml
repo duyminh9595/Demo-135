@@ -74,13 +74,13 @@ services:
     networks:
       - thesis
     extra_hosts:
-      - "orderer.thesis.com:104.197.116.180"
-      - "orderer2.thesis.com:104.197.116.180"
-      - "orderer3.thesis.com:104.197.116.180"
-      - "peer0.thayson.thesis.com:104.197.116.180"
-      - "peer1.thayson.thesis.com:104.197.116.180"
-      - "peer0.cohuong.thesis.com:34.72.180.39"
-      - "peer1.cohuong.thesis.com:34.72.180.39"
+      - "orderer.thesis.com:34.68.51.202"
+      - "orderer2.thesis.com:34.68.51.202"
+      - "orderer3.thesis.com:34.68.51.202"
+      - "peer0.thayson.thesis.com:34.68.51.202"
+      - "peer1.thayson.thesis.com:34.68.51.202"
+      - "peer0.cohuong.thesis.com:34.71.102.58"
+      - "peer1.cohuong.thesis.com:34.71.102.58"
 
   peer1.thayson.thesis.com:
     container_name: peer1.thayson.thesis.com
@@ -124,13 +124,13 @@ services:
     networks:
       - thesis
     extra_hosts:
-      - "orderer.thesis.com:104.197.116.180"
-      - "orderer2.thesis.com:104.197.116.180"
-      - "orderer3.thesis.com:104.197.116.180"
-      - "peer0.thayson.thesis.com:104.197.116.180"
-      - "peer1.thayson.thesis.com:104.197.116.180"
-      - "peer0.cohuong.thesis.com:34.72.180.39"
-      - "peer1.cohuong.thesis.com:34.72.180.39"
+      - "orderer.thesis.com:34.68.51.202"
+      - "orderer2.thesis.com:34.68.51.202"
+      - "orderer3.thesis.com:34.68.51.202"
+      - "peer0.thayson.thesis.com:34.68.51.202"
+      - "peer1.thayson.thesis.com:34.68.51.202"
+      - "peer0.cohuong.thesis.com:34.71.102.58"
+      - "peer1.cohuong.thesis.com:34.71.102.58"
 
   cli:
     container_name: cli
@@ -163,10 +163,10 @@ services:
       - ./../cohuong/crypto-config/peerOrganizations/cohuong.thesis.com/:/etc/hyperledger/channel/crypto-config/peerOrganizations/cohuong.thesis.com/
       - ./../orderer/crypto-config/ordererOrganizations/thesis.com/:/etc/hyperledger/channel/crypto-config/ordererOrganizations/thesis.com/
     extra_hosts:
-      - "orderer.thesis.com:104.197.116.180"
-      - "orderer2.thesis.com:104.197.116.180"
-      - "orderer3.thesis.com:104.197.116.180"
-      - "peer0.thayson.thesis.com:104.197.116.180"
-      - "peer1.thayson.thesis.com:104.197.116.180"
-      - "peer0.cohuong.thesis.com:34.72.180.39"
-      - "peer1.cohuong.thesis.com:34.72.180.39"
+      - "orderer.thesis.com:34.68.51.202"
+      - "orderer2.thesis.com:34.68.51.202"
+      - "orderer3.thesis.com:34.68.51.202"
+      - "peer0.thayson.thesis.com:34.68.51.202"
+      - "peer1.thayson.thesis.com:34.68.51.202"
+      - "peer0.cohuong.thesis.com:34.71.102.58"
+      - "peer1.cohuong.thesis.com:34.71.102.58"
