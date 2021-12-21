@@ -50,7 +50,7 @@ presetup() {
 CHANNEL_NAME="mychannel"
 CC_RUNTIME_LANGUAGE="node"
 VERSION="1"
-CC_SRC_PATH="./../../artifacts/chaincode"
+CC_SRC_PATH="./../../artifacts/src/chaincode"
 CC_NAME="thesis"
 
 packageChaincode() {

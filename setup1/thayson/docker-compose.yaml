@@ -79,8 +79,8 @@ services:
       - "orderer3.thesis.com:104.197.116.180"
       - "peer0.thayson.thesis.com:104.197.116.180"
       - "peer1.thayson.thesis.com:104.197.116.180"
-      - "peer0.cohuong.thesis.com:34.71.102.58"
-      - "peer1.cohuong.thesis.com:34.71.102.58"
+      - "peer0.cohuong.thesis.com:34.72.180.39"
+      - "peer1.cohuong.thesis.com:34.72.180.39"
 
   peer1.thayson.thesis.com:
     container_name: peer1.thayson.thesis.com
@@ -129,8 +129,8 @@ services:
       - "orderer3.thesis.com:104.197.116.180"
       - "peer0.thayson.thesis.com:104.197.116.180"
       - "peer1.thayson.thesis.com:104.197.116.180"
-      - "peer0.cohuong.thesis.com:34.71.102.58"
-      - "peer1.cohuong.thesis.com:34.71.102.58"
+      - "peer0.cohuong.thesis.com:34.72.180.39"
+      - "peer1.cohuong.thesis.com:34.72.180.39"
 
   cli:
     container_name: cli
@@ -168,5 +168,5 @@ services:
       - "orderer3.thesis.com:104.197.116.180"
       - "peer0.thayson.thesis.com:104.197.116.180"
       - "peer1.thayson.thesis.com:104.197.116.180"
-      - "peer0.cohuong.thesis.com:34.71.102.58"
-      - "peer1.cohuong.thesis.com:34.71.102.58"
+      - "peer0.cohuong.thesis.com:34.72.180.39"
+      - "peer1.cohuong.thesis.com:34.72.180.39"
