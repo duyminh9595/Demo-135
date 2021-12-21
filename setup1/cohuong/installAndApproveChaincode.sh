@@ -28,7 +28,7 @@ presetup() {
     popd
     echo Finished vendoring Go dependencies
 }
-# presetup
+presetup
 
 CHANNEL_NAME="mychannel"
 CC_RUNTIME_LANGUAGE="golang"
@@ -71,7 +71,7 @@ approveForMycohuong() {
     setGlobalsForPeer0cohuong
 
     # Replace localhost with your orderer's vm IP address
-    peer lifecycle chaincode approveformyorg -o 35.223.189.30:7050 \
+    peer lifecycle chaincode approveformyorg -o 34.71.102.58:7050 \
         --ordererTLSHostnameOverride orderer.thesis.com --tls $CORE_PEER_TLS_ENABLED \
         --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name ${CC_NAME} \
         --version ${VERSION} --init-required --package-id ${PACKAGE_ID} \

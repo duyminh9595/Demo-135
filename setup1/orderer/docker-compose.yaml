@@ -39,13 +39,13 @@ services:
       - ./crypto-config/ordererOrganizations/thesis.com/orderers/orderer.thesis.com/msp:/var/hyperledger/orderer/msp
       - ./crypto-config/ordererOrganizations/thesis.com/orderers/orderer.thesis.com/tls:/var/hyperledger/orderer/tls
     extra_hosts:
-      - "orderer.thesis.com:35.223.189.30"
-      - "orderer2.thesis.com:35.223.189.30"
-      - "orderer3.thesis.com:35.223.189.30"
-      - "peer0.thayson.thesis.com:35.223.189.30"
-      - "peer1.thayson.thesis.com:35.223.189.30"
-      - "peer0.cohuong.thesis.com:35.224.153.140"
-      - "peer1.cohuong.thesis.com:35.224.153.140"
+      - "orderer.thesis.com:34.71.102.58"
+      - "orderer2.thesis.com:34.71.102.58"
+      - "orderer3.thesis.com:34.71.102.58"
+      - "peer0.thayson.thesis.com:34.71.102.58"
+      - "peer1.thayson.thesis.com:34.71.102.58"
+      - "peer0.cohuong.thesis.com:104.197.116.180"
+      - "peer1.cohuong.thesis.com:104.197.116.180"
   
   orderer2.thesis.com:
     container_name: orderer2.thesis.com
@@ -82,13 +82,13 @@ services:
       - ./crypto-config/ordererOrganizations/thesis.com/orderers/orderer2.thesis.com/msp:/var/hyperledger/orderer/msp
       - ./crypto-config/ordererOrganizations/thesis.com/orderers/orderer2.thesis.com/tls:/var/hyperledger/orderer/tls
     extra_hosts:
-      - "orderer.thesis.com:35.223.189.30"
-      - "orderer2.thesis.com:35.223.189.30"
-      - "orderer3.thesis.com:35.223.189.30"
-      - "peer0.thayson.thesis.com:35.223.189.30"
-      - "peer1.thayson.thesis.com:35.223.189.30"
-      - "peer0.cohuong.thesis.com:35.224.153.140"
-      - "peer1.cohuong.thesis.com:35.224.153.140"
+      - "orderer.thesis.com:34.71.102.58"
+      - "orderer2.thesis.com:34.71.102.58"
+      - "orderer3.thesis.com:34.71.102.58"
+      - "peer0.thayson.thesis.com:34.71.102.58"
+      - "peer1.thayson.thesis.com:34.71.102.58"
+      - "peer0.cohuong.thesis.com:104.197.116.180"
+      - "peer1.cohuong.thesis.com:104.197.116.180"
 
 
   orderer3.thesis.com:
@@ -126,10 +126,10 @@ services:
       - ./crypto-config/ordererOrganizations/thesis.com/orderers/orderer3.thesis.com/msp:/var/hyperledger/orderer/msp
       - ./crypto-config/ordererOrganizations/thesis.com/orderers/orderer3.thesis.com/tls:/var/hyperledger/orderer/tls
     extra_hosts:
-      - "orderer.thesis.com:35.223.189.30"
-      - "orderer2.thesis.com:35.223.189.30"
-      - "orderer3.thesis.com:35.223.189.30"
-      - "peer0.thayson.thesis.com:35.223.189.30"
-      - "peer1.thayson.thesis.com:35.223.189.30"
-      - "peer0.cohuong.thesis.com:35.224.153.140"
-      - "peer1.cohuong.thesis.com:35.224.153.140"
+      - "orderer.thesis.com:34.71.102.58"
+      - "orderer2.thesis.com:34.71.102.58"
+      - "orderer3.thesis.com:34.71.102.58"
+      - "peer0.thayson.thesis.com:34.71.102.58"
+      - "peer1.thayson.thesis.com:34.71.102.58"
+      - "peer0.cohuong.thesis.com:104.197.116.180"
+      - "peer1.cohuong.thesis.com:104.197.116.180"
