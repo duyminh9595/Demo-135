@@ -89,13 +89,13 @@ services:
     networks:
       - thesis
     extra_hosts:
-      - "orderer.example.com:35.223.189.30"
-      - "orderer2.example.com:35.223.189.30"
-      - "orderer3.example.com:35.223.189.30"
-      - "peer0.thayson.thesis.com:35.223.189.30"
-      - "peer1.thayson.thesis.com:35.223.189.30"
-      - "peer0.cohuong.thesis.com:35.223.189.30"
-      - "peer1.cohuong.thesis.com:35.223.189.30"
+      - "orderer.thesis.com:34.71.102.58"
+      - "orderer2.thesis.com:34.71.102.58"
+      - "orderer3.thesis.com:34.71.102.58"
+      - "peer0.thayson.thesis.com:34.71.102.58"
+      - "peer1.thayson.thesis.com:34.71.102.58"
+      - "peer0.cohuong.thesis.com:104.197.116.180"
+      - "peer1.cohuong.thesis.com:104.197.116.180"
 
   peer1.cohuong.thesis.com:
     container_name: peer1.cohuong.thesis.com
@@ -139,10 +139,10 @@ services:
     networks:
       - thesis
     extra_hosts:
-      - "orderer.example.com:35.223.189.30"
-      - "orderer2.example.com:35.223.189.30"
-      - "orderer3.example.com:35.223.189.30"
-      - "peer0.thayson.thesis.com:35.223.189.30"
-      - "peer1.thayson.thesis.com:35.223.189.30"
-      - "peer0.cohuong.thesis.com:35.223.189.30"
-      - "peer1.cohuong.thesis.com:35.223.189.30"
+      - "orderer.thesis.com:34.71.102.58"
+      - "orderer2.thesis.com:34.71.102.58"
+      - "orderer3.thesis.com:34.71.102.58"
+      - "peer0.thayson.thesis.com:34.71.102.58"
+      - "peer1.thayson.thesis.com:34.71.102.58"
+      - "peer0.cohuong.thesis.com:104.197.116.180"
+      - "peer1.cohuong.thesis.com:104.197.116.180"
