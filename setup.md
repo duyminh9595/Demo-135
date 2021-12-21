@@ -53,6 +53,8 @@ extra_hosts:
 # code in cli
 docker exec -it cli bash
 
+
+
 export CORE_PEER_LOCALMSPID="thaysonMSP"
 export CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/channel/crypto-config/peerOrganizations/thayson.thesis.com/peers/peer0.thayson.thesis.com/tls/ca.crt
 export CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/channel/crypto-config/peerOrganizations/thayson.thesis.com/users/Admin@thayson.thesis.com/msp
@@ -86,3 +88,5 @@ peer chaincode invoke -o orderer.thesis.com:7050 \
 --peerAddresses peer0.thayson.thesis.com:7051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/thayson.thesis.com/peers/peer0.thayson.thesis.com/tls/ca.crt \
 --peerAddresses peer0.cohuong.thesis.com:9051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/cohuong.thesis.com/peers/peer0.cohuong.thesis.com/tls/ca.crt \
 -c '{"function": "createCar","Args":["666666", "Audi", "R8", "Red", "Sandip"]}'
+
+docker exec -it artifacts_api_1 sh
