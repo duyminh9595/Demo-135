@@ -216,7 +216,9 @@ class Cs01Contract extends Contract {
 
       await ctx.stub.putState(this.TxId, Buffer.from(JSON.stringify(userAddAmountTarget)));
 
-
+      const targetUser = JSON.parse(targetUserAsBytes.toString());
+      targetUser.current_balance = parseInt(targetUser.current_balance, 10) + parseInt(amount, 10) * parseInt(rate_currency, 10);
+      await ctx.stub.putState(id_target, Buffer.from(JSON.stringify(targetUser)));
       // compose the return values
       return {
         key: this.TxId
