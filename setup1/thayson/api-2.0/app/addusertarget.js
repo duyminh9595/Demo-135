@@ -9,6 +9,8 @@ const util = require('util')
 
 const helper = require('./helper')
 
+const bcrypt = require('bcrypt')
+
 // const createTransactionEventHandler = (transactionId, network) => {
 //     /* Your implementation here */
 //     const mspId = network.getGateway().getIdentity().mspId;
@@ -16,7 +18,11 @@ const helper = require('./helper')
 //     return new MyTransactionEventHandler(transactionId, network, myOrgPeers);
 // }
 
-const invokeTransaction = async (channelName, chaincodeName, fcn, username, password) => {
+const invokeTransaction = async (channelName, chaincodeName, username, description,
+    start_date,
+    end_date,
+    amount,
+    currency, uuid) => {
     try {
         logger.debug(util.format('\n============ invoke transaction on channel %s ============\n', channelName));
 
@@ -62,62 +68,24 @@ const invokeTransaction = async (channelName, chaincodeName, fcn, username, pass
 
         const contract = network.getContract(chaincodeName);
 
-        // let result
-        // let message;
-        // switch (fcn) {
-        //     case "CreateInvoice":
-        //         result = await contract.submitTransaction(fcn, args[0]);
-        //         // obj = JSON.stringify(JSON.parse(args[0]))
-        //         // console.log(JSON.parse(args[0]))
-        //         message = `Successfully added the Invoice Data`
-        //         break;
-        //     case "UpdateInvoice":
-        //         if ("thayson" == "Org1") {
-        //             return { message: "Only Organization 2 is allowed to add transactions" }
-        //         } else {
-        //             result = await contract.submitTransaction(fcn, args[0], args[1], args[2]);
-        //             // obj = JSON.stringify(JSON.parse(args[0]))
-        //             // console.log(JSON.parse(args[0]))
-        //             message = `Successfully updated the Invoice Data`
-        //             break;
-        //         }
 
-
-        //     // case ""
-
-        //     default:
-        //         return utils.getResponsePayload("Please send correct chaincode function name", null, false)
-        //         break;
-        // }
         let result
-        let message;
-        if (fcn === "registerUser") {
-            result = await contract.submitTransaction(
-                'registerUser',
-                username,
-                password,
-                "",
-                ""
-            )
-        }
-        else {
-            return `Invocation require registerUser as function but got ${fcn}`
-        }
+        result = await contract.submitTransaction(
+            'addTarget',
+            username,
+            description,
+            start_date,
+            end_date,
+            amount,
+            currency,
+            "1",
+            uuid
+        )
+
+        result = JSON.parse(result.toString());
         await gateway.disconnect();
 
-        // result = JSON.parse(result.toString());
-
-        let response = {
-            message: "Thành công"
-            // result
-        }
-
-        // let response = {
-        //     message: message,
-        //     result
-        // }
-
-        return response;
+        return result;
 
 
     } catch (error) {

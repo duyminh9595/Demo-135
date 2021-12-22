@@ -9,6 +9,8 @@ const util = require('util')
 
 const helper = require('./helper')
 
+const bcrypt = require('bcrypt')
+
 // const createTransactionEventHandler = (transactionId, network) => {
 //     /* Your implementation here */
 //     const mspId = network.getGateway().getIdentity().mspId;
@@ -16,7 +18,10 @@ const helper = require('./helper')
 //     return new MyTransactionEventHandler(transactionId, network, myOrgPeers);
 // }
 
-const invokeTransaction = async (channelName, chaincodeName, fcn, username, password) => {
+const invokeTransaction = async (channelName, chaincodeName, username, id_target,
+    amount,
+    currency,
+    rate_currency) => {
     try {
         logger.debug(util.format('\n============ invoke transaction on channel %s ============\n', channelName));
 
@@ -90,34 +95,25 @@ const invokeTransaction = async (channelName, chaincodeName, fcn, username, pass
         //         break;
         // }
         let result
-        let message;
-        if (fcn === "registerUser") {
-            result = await contract.submitTransaction(
-                'registerUser',
-                username,
-                password,
-                "",
-                ""
-            )
-        }
-        else {
-            return `Invocation require registerUser as function but got ${fcn}`
-        }
+        result = await contract.submitTransaction(
+            'addTransactionTarget',
+            username,
+            id_target,
+            amount,
+            currency,
+            rate_currency
+        )
+
+        result = JSON.parse(result.toString());
         await gateway.disconnect();
 
-        // result = JSON.parse(result.toString());
-
-        let response = {
-            message: "Thành công"
-            // result
-        }
 
         // let response = {
         //     message: message,
         //     result
         // }
 
-        return response;
+        return result;
 
 
     } catch (error) {

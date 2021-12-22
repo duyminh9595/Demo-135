@@ -7,16 +7,13 @@ const util = require('util')
 
 
 const helper = require('./helper')
-const query = async (channelName, chaincodeName, fcn, username, org_name) => {
+const query = async (channelName, chaincodeName, username) => {
 
     try {
-        // load the network configuration
-        // const ccpPath = path.resolve(__dirname, '..', 'config', 'connection-org1.json');
-        // const ccpJSON = fs.readFileSync(ccpPath, 'utf8')
-        const ccp = await helper.getCCP(org_name) //JSON.parse(ccpJSON);
+        const ccp = await helper.getCCP("thayson") //JSON.parse(ccpJSON);
 
         // Create a new file system based wallet for managing identities.
-        const walletPath = await helper.getWalletPath(org_name) //.join(process.cwd(), 'wallet');
+        const walletPath = await helper.getWalletPath("thayson") //.join(process.cwd(), 'wallet');
         const wallet = await Wallets.newFileSystemWallet(walletPath);
         console.log(`Wallet path: ${walletPath}`);
 
@@ -24,7 +21,7 @@ const query = async (channelName, chaincodeName, fcn, username, org_name) => {
         let identity = await wallet.get(username);
         if (!identity) {
             console.log(`An identity for the user ${username} does not exist in the wallet, so registering user`);
-            await helper.getRegisteredUser(username, org_name, true)
+            await helper.getRegisteredUser(username, "thayson", true)
             identity = await wallet.get(username);
             console.log('Run the registerUser.js application before retrying');
             return;
@@ -44,11 +41,9 @@ const query = async (channelName, chaincodeName, fcn, username, org_name) => {
         let result;
 
         result = await contract.submitTransaction(
-            'queryUser', username
+            'seeAllUserSpending',
+            username
         )
-
-        console.log(result)
-        console.log(`Transaction has been evaluated, result is: ${result.toString()}`);
 
         result = JSON.parse(result.toString());
         return result
