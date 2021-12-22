@@ -1,2 +1,2 @@
 Installed chaincodes on peer:
-Package ID: thesis_1:578ed21d49cc720186fb2abe50e17da0d27675d171525ee02c8fdfefad030882, Label: thesis_1
+Package ID: thesis_1:1f18075d9eea985de6ea104bd6f6990a12e0e690971c3238b5970d2ef27bfe92, Label: thesis_1

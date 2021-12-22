@@ -93,9 +93,6 @@ class Cs01Contract extends Contract {
     try {
 
       await ctx.stub.putState(this.TxId, Buffer.from(JSON.stringify(userIncome)));
-      const userBalance = JSON.parse(userAsBytes.toString());
-      userBalance.balance = parseInt(userBalance.balance, 10) + parseInt(amount, 10) * parseInt(rate_currency, 10);
-      await ctx.stub.putState(email, Buffer.from(JSON.stringify(userBalance)));
       console.info('============= END : change Balance User ===========');
 
       // compose the return values
@@ -127,10 +124,6 @@ class Cs01Contract extends Contract {
     };
     try {
       await ctx.stub.putState(this.TxId, Buffer.from(JSON.stringify(userSpending)));
-      const userBalance = JSON.parse(userAsBytes.toString());
-      userBalance.balance = parseInt(userBalance.balance, 10) - parseInt(amount, 10) * parseInt(rate_currency, 10);
-      await ctx.stub.putState(email, Buffer.from(JSON.stringify(userBalance)));
-      console.info('============= END : change Balance User ===========');
 
       // compose the return values
       return {
@@ -219,10 +212,6 @@ class Cs01Contract extends Contract {
       }
 
       await ctx.stub.putState(this.TxId, Buffer.from(JSON.stringify(userAddAmountTarget)));
-      const targetUser = JSON.parse(targetUserAsBytes.toString());
-      targetUser.current_balance = targetUser.current_balance + amount * rate_currency;
-      await ctx.stub.putState(id_target, Buffer.from(JSON.stringify(targetUser)));
-      console.info('============= END : change target amount User ===========');
 
 
       // compose the return values

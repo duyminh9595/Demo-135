@@ -7,7 +7,7 @@ docker network prune
 cohuong: 34.67.248.87
 thayson orderer: dm org 35.224.10.90
 docker swarm init --advertise-addr 35.224.10.90
-docker swarm join --token SWMTKN-1-57wujrcn5r8x8ykcmjq52km4j1cqg7xnvb4akt28eoizxkk756-8ryelktozdxe9535e8rir11y4 35.224.10.90:2377 --advertise-addr 34.67.248.87
+docker swarm join --token SWMTKN-1-1fdtqimjhmnpinm25qzc7wra7uy1l5hbwtufp4ph18gcz7djgd-f3bvv3gxpfvp9g6a1pjge8dj2 35.224.10.90:2377 --advertise-addr 34.67.248.87
 docker network create --attachable --driver overlay artifacts_thesis
 
 # remove ca
@@ -19,7 +19,7 @@ rm -r -f ../orderer/crypto-config/
 rm -r -f ../orderer/create-certificate-with-ca/fabric-ca/
 
 # tạo ca
-cd thayson/create-certificate-with-ca/
+cd /home/ubuntu/Demo-135/setup1/thayson/create-certificate-with-ca/
 docker-compose up -d
 ./create-certificate-with-ca.sh 
 cd ../../cohuong/create-certificate-with-ca/

@@ -91,15 +91,17 @@ const invokeTransaction = async (channelName, chaincodeName, username, descripti
         //         return utils.getResponsePayload("Please send correct chaincode function name", null, false)
         //         break;
         // }
+
         let result
+
         result = await contract.submitTransaction(
             'addIncomeUser',
             username,
             description,
-            amount,
+            new String(amount),
             currency,
             "1",
-            id_income
+            new String(id_income)
         )
 
         result = JSON.parse(result.toString());
