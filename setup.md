@@ -2,22 +2,28 @@
 docker swarm leave --force
 docker rm -vf $(docker ps -aq) && docker volume prune -f
 docker network prune
-
+rm -r -f /home/ubuntu/Demo-135
 # docker swarm
 cohuong: 34.67.248.87
 thayson orderer: dm org 35.224.10.90
 docker swarm init --advertise-addr 35.224.10.90
-docker swarm join --token SWMTKN-1-410jmrhk1y29gzryfe8obhhqeomgum11kdwhos0zzw0q0mt1tf-b8s1nn8dmwjyz7zmrvyycpc4s 35.224.10.90:2377 --advertise-addr 34.67.248.87
+docker swarm join --token SWMTKN-1-1e780937megatbpb60dkm8ut3khnr77705pl5mgmrgsvoy9hiz-ediv47mpkb1fp4q0dcusrmcqd 35.224.10.90:2377 --advertise-addr 34.67.248.87
 docker network create --attachable --driver overlay artifacts_thesis
 
 # remove ca
+cd /home/ubuntu/Demo-135/setup1/thayson
 rm -r -f ../thayson/crypto-config/
+rm -r -f ../thayson/channel-artifacts/*
 rm -r -f ../thayson/create-certificate-with-ca/fabric-ca/
 rm -r -f ../cohuong/crypto-config/
 rm -r -f ../cohuong/create-certificate-with-ca/fabric-ca/
 rm -r -f ../orderer/crypto-config/
 rm -r -f ../orderer/create-certificate-with-ca/fabric-ca/
 
+git add *
+git commit -m "D"
+git push origin
+git clone https://github.com/duyminh9595/Demo-135.git
 duyminh95@gmail.com
 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
 
@@ -39,6 +45,8 @@ docker-compose up -d
 cd /home/ubuntu/Demo-135/setup1/orderer
 docker-compose up -d
 cd /home/ubuntu/Demo-135/setup1/cohuong
+docker-compose up -d
+cd /home/ubuntu/Demo-135/setup1/thayson/create-certificate-with-ca/
 docker-compose up -d
 
 # api

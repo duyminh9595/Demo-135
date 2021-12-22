@@ -73,15 +73,14 @@ class Cs01Contract extends Contract {
     console.info('============= END : change Balance User ===========');
   }
   //add income
-  async addIncomeUser(ctx, email, income_name, amount, currency, rate_currency, id_income) {
+  async addIncomeUser(ctx, email, income_name, amount, currency, rate_currency, id_income, date_created) {
     const userAsBytes = await ctx.stub.getState(email);
     if (!userAsBytes || userAsBytes.length === 0) {
       throw new Error(`${userAsBytes} does not exist`);
     }
-    let _keyHelper = new Date();
     const userIncome = {
       email,
-      date_created: _keyHelper,
+      date_created,
       income_name,
       amount,
       currency,
@@ -105,15 +104,14 @@ class Cs01Contract extends Contract {
     }
   }
   //add spending
-  async addSpendingUser(ctx, email, spend_name, amount, currency, rate_currency, id_spending) {
+  async addSpendingUser(ctx, email, spend_name, amount, currency, rate_currency, id_spending, date_created) {
     const userAsBytes = await ctx.stub.getState(email);
     if (!userAsBytes || userAsBytes.length === 0) {
       throw new Error(`${userAsBytes} does not exist`);
     }
-    let _keyHelper = new Date();
     const userSpending = {
       email,
-      date_created: _keyHelper,
+      date_created,
       spend_name,
       amount,
       currency,
@@ -190,15 +188,14 @@ class Cs01Contract extends Contract {
     return queryResults; //shim.success(queryResults);
   }
   //add transaction to target
-  async addTransactionTarget(ctx, email, id_target, amount, currency, rate_currency) {
+  async addTransactionTarget(ctx, email, id_target, amount, currency, rate_currency, date_created) {
     const userAsBytes = await ctx.stub.getState(email);
     if (!userAsBytes || userAsBytes.length === 0) {
       throw new Error(`${userAsBytes} does not exist`);
     }
-    let _keyHelper = new Date();
     const userAddAmountTarget = {
       email,
-      date_created: _keyHelper,
+      date_created,
       amount,
       currency,
       rate_currency,
