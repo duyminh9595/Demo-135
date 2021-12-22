@@ -21,39 +21,74 @@ setGlobalsForPeer1cohuong() {
 
 }
 
-fetchChannelBlock() {
-    rm -rf ./channel-artifacts/*
+presetup() {
+    echo Vendoring Go dependencies ...
+    pushd ./../../artifacts/src/github.com/fabcar/go
+    GO111MODULE=on go mod vendor
+    popd
+    echo Finished vendoring Go dependencies
+}
+# presetup
+
+CHANNEL_NAME="mychannel"
+CC_RUNTIME_LANGUAGE="node"
+VERSION="1"
+CC_SRC_PATH="./../../artifacts/src/chaincode"
+CC_NAME="thesis"
+
+packageChaincode() {
+    rm -rf ${CC_NAME}.tar.gz
     setGlobalsForPeer0cohuong
+    peer lifecycle chaincode package ${CC_NAME}.tar.gz \
+        --path ${CC_SRC_PATH} --lang ${CC_RUNTIME_LANGUAGE} \
+        --label ${CC_NAME}_${VERSION}
+    echo "===================== Chaincode is packaged on peer0.cohuong ===================== "
+}
+packageChaincode
+
+installChaincode() {
+    setGlobalsForPeer0cohuong
+    peer lifecycle chaincode install ${CC_NAME}.tar.gz
+    echo "===================== Chaincode is installed on peer0.cohuong ===================== "
+
+}
+
+installChaincode
+
+queryInstalled() {
+    setGlobalsForPeer0cohuong
+    peer lifecycle chaincode queryinstalled >&log.txt
+
+    cat log.txt
+    PACKAGE_ID=$(sed -n "/${CC_NAME}_${VERSION}/{s/^Package ID: //; s/, Label:.*$//; p;}" log.txt)
+    echo PackageID is ${PACKAGE_ID}
+    echo "===================== Query installed successful on peer0.cohuong on channel ===================== "
+}
+
+queryInstalled
+
+approveForMycohuong() {
+    setGlobalsForPeer0cohuong
+
     # Replace localhost with your orderer's vm IP address
-    peer channel fetch 0 ./channel-artifacts/$CHANNEL_NAME.block -o 104.197.116.180:7050 \
-        --ordererTLSHostnameOverride orderer.thesis.com \
-        -c $CHANNEL_NAME --tls --cafile $ORDERER_CA
+    peer lifecycle chaincode approveformyorg -o 35.224.10.90:7050 \
+        --ordererTLSHostnameOverride orderer.thesis.com --tls $CORE_PEER_TLS_ENABLED \
+        --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name ${CC_NAME} \
+        --version ${VERSION} --init-required --package-id ${PACKAGE_ID} \
+        --sequence ${VERSION}
+
+    echo "===================== chaincode approved from org 2 ===================== "
 }
+queryInstalled
+approveForMycohuong
 
-# fetchChannelBlock
+checkCommitReadyness() {
 
-joinChannel() {
     setGlobalsForPeer0cohuong
-    peer channel join -b ./channel-artifacts/$CHANNEL_NAME.block
-
-    setGlobalsForPeer1cohuong
-    peer channel join -b ./channel-artifacts/$CHANNEL_NAME.block
-
+    peer lifecycle chaincode checkcommitreadiness --channelID $CHANNEL_NAME \
+        --peerAddresses localhost:9051 --tlsRootCertFiles $PEER0_cohuong_CA \
+        --name ${CC_NAME} --version ${VERSION} --sequence ${VERSION} --output json --init-required
+    echo "===================== checking commit readyness from org 1 ===================== "
 }
 
-# joinChannel
-
-updateAnchorPeers() {
-    setGlobalsForPeer0cohuong
-    # Replace localhost with your orderer's vm IP address
-    peer channel update -o 104.197.116.180:7050 --ordererTLSHostnameOverride orderer.thesis.com \
-        -c $CHANNEL_NAME -f ./../../artifacts/channel/${CORE_PEER_LOCALMSPID}anchors.tx \
-        --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA
-
-}
-
-# updateAnchorPeers
-
-fetchChannelBlock
-joinChannel
-updateAnchorPeers
+checkCommitReadyness
