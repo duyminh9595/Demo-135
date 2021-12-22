@@ -101,7 +101,7 @@ const invokeTransaction = async (channelName, chaincodeName, username, descripti
             new String(amount),
             currency,
             "1",
-            new String(id_income)
+            new String(id_income), new Date()
         )
 
         result = JSON.parse(result.toString());

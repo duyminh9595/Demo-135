@@ -313,7 +313,7 @@ app.post('/api/adduserincome', async function (req, res) {
 })
 
 //see all user income
-app.post('/api/seealluserincome', async function (req, res) {
+app.get('/api/seealluserincome', async function (req, res) {
     const username = req.username
     logger.debug('End point : /api/seealluserincome');
     logger.debug('User name : ' + username);
@@ -367,7 +367,7 @@ app.post('/api/adduserspending', async function (req, res) {
 })
 
 //see all user spending
-app.post('/api/seealluserspending', async function (req, res) {
+app.get('/api/seealluserspending', async function (req, res) {
     const username = req.username
     logger.debug('End point : /api/seealluserspending');
     logger.debug('User name : ' + username);
@@ -495,7 +495,7 @@ app.post('/api/seeinfortarget', async function (req, res) {
 })
 
 //see all
-app.post('/api/seeall', async function (req, res) {
+app.get('/api/seeall', async function (req, res) {
     const username = req.username
     logger.debug('End point : /api/seeall');
     logger.debug('User name : ' + username);

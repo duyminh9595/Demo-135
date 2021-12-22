@@ -92,6 +92,10 @@ class Cs01Contract extends Contract {
     try {
 
       await ctx.stub.putState(this.TxId, Buffer.from(JSON.stringify(userIncome)));
+
+      const userBalance = JSON.parse(userAsBytes.toString());
+      userBalance.balance = parseInt(userBalance.balance, 10) + parseInt(amount, 10) * parseInt(rate_currency, 10);
+      await ctx.stub.putState(email, Buffer.from(JSON.stringify(userBalance)));
       console.info('============= END : change Balance User ===========');
 
       // compose the return values
@@ -122,7 +126,9 @@ class Cs01Contract extends Contract {
     };
     try {
       await ctx.stub.putState(this.TxId, Buffer.from(JSON.stringify(userSpending)));
-
+      const userBalance = JSON.parse(userAsBytes.toString());
+      userBalance.balance = parseInt(userBalance.balance, 10) - parseInt(amount, 10) * parseInt(rate_currency, 10);
+      await ctx.stub.putState(email, Buffer.from(JSON.stringify(userBalance)));
       // compose the return values
       return {
         key: this.TxId
