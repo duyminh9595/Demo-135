@@ -7,7 +7,7 @@ docker network prune
 cohuong: 34.67.248.87
 thayson orderer: dm org 35.224.10.90
 docker swarm init --advertise-addr 35.224.10.90
-docker swarm join --token SWMTKN-1-1fdtqimjhmnpinm25qzc7wra7uy1l5hbwtufp4ph18gcz7djgd-f3bvv3gxpfvp9g6a1pjge8dj2 35.224.10.90:2377 --advertise-addr 34.67.248.87
+docker swarm join --token SWMTKN-1-410jmrhk1y29gzryfe8obhhqeomgum11kdwhos0zzw0q0mt1tf-b8s1nn8dmwjyz7zmrvyycpc4s 35.224.10.90:2377 --advertise-addr 34.67.248.87
 docker network create --attachable --driver overlay artifacts_thesis
 
 # remove ca
@@ -17,6 +17,9 @@ rm -r -f ../cohuong/crypto-config/
 rm -r -f ../cohuong/create-certificate-with-ca/fabric-ca/
 rm -r -f ../orderer/crypto-config/
 rm -r -f ../orderer/create-certificate-with-ca/fabric-ca/
+
+duyminh95@gmail.com
+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
 
 # tạo ca
 cd /home/ubuntu/Demo-135/setup1/thayson/create-certificate-with-ca/
@@ -89,7 +92,7 @@ peer chaincode invoke -o orderer.thesis.com:7050 \
 -C $CHANNEL_NAME -n ${CC_NAME} \
 --peerAddresses peer0.thayson.thesis.com:7051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/thayson.thesis.com/peers/peer0.thayson.thesis.com/tls/ca.crt \
 --peerAddresses peer0.cohuong.thesis.com:9051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/cohuong.thesis.com/peers/peer0.cohuong.thesis.com/tls/ca.crt \
---isInit -c '{"Args":["registerUser","duyminh@gmail.com","123456","le quang duy minh","07/06/1995"]}' --isInit
+--isInit -c '{"Args":["registerUser","@gmail.com","123456","le quang duy minh","07/06/1995"]}' --isInit
 
 
 peer chaincode invoke -o orderer.thesis.com:7050 \
@@ -116,7 +119,7 @@ peer chaincode invoke -o orderer.thesis.com:7050 \
 -C $CHANNEL_NAME -n ${CC_NAME} \
 --peerAddresses peer0.thayson.thesis.com:7051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/thayson.thesis.com/peers/peer0.thayson.thesis.com/tls/ca.crt \
 --peerAddresses peer0.cohuong.thesis.com:9051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/cohuong.thesis.com/peers/peer0.cohuong.thesis.com/tls/ca.crt \
--c '{"Args":["addIncomeUser","duyminh95@gmail.com","OK1","45000","VND","1","1"]}' 
+-c '{"Args":["addIncomeUser","dongok1@gmail.com","OK1","45000","VND","1","1"]}' 
 
 peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"function": "queryUser","Args":["duyminh95@gmail.com"]}' | jq .
 
