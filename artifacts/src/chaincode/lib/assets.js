@@ -118,10 +118,10 @@ class Cs01Contract extends Contract {
   }
   //add spending
   async addSpendingUser(ctx, email, spend_name, amount, currency, rate_currency, id_spending) {
-    const userAsBytes = await ctx.stub.getState(email);
-    if (!userAsBytes || userAsBytes.length === 0) {
-      throw new Error(`${userAsBytes} does not exist`);
-    }
+    // const userAsBytes = await ctx.stub.getState(email);
+    // if (!userAsBytes || userAsBytes.length === 0) {
+    //   throw new Error(`${userAsBytes} does not exist`);
+    // }
     let _keyHelper = new Date();
     const userSpending = {
       email,
@@ -146,9 +146,9 @@ class Cs01Contract extends Contract {
 
       let yearMonthIndexKey = await ctx.stub.createCompositeKey(indexName, [_keyYearAsString, _keyMonthAsString, _keyDateAsString, this.TxId]);
       await ctx.stub.putState(yearMonthIndexKey, Buffer.from(JSON.stringify(userSpending)));
-      const userBalance = JSON.parse(userAsBytes.toString());
-      userBalance.balance = parseInt(userBalance.balance, 10) - parseInt(amount, 10) * parseInt(rate_currency, 10);
-      await ctx.stub.putState(email, Buffer.from(JSON.stringify(userBalance)));
+      // const userBalance = JSON.parse(userAsBytes.toString());
+      // userBalance.balance = parseInt(userBalance.balance, 10) - parseInt(amount, 10) * parseInt(rate_currency, 10);
+      // await ctx.stub.putState(email, Buffer.from(JSON.stringify(userBalance)));
       console.info('============= END : change Balance User ===========');
 
       // compose the return values

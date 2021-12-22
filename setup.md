@@ -45,6 +45,10 @@ docker rm artifacts_api_1
 docker exec -it artifacts_api_1 sh
 docker logs artifacts_api_1 -f
 
+http://35.224.10.90:4000/api/addusertransactiontotarget
+http://35.224.10.90:4000/api/adduserspending
+http://35.224.10.90:4000/api/adduserincome
+
 
 # add extra hosts
 extra_hosts:
@@ -103,7 +107,7 @@ peer chaincode invoke -o orderer.thesis.com:7050 \
 -C $CHANNEL_NAME -n ${CC_NAME} \
 --peerAddresses peer0.thayson.thesis.com:7051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/thayson.thesis.com/peers/peer0.thayson.thesis.com/tls/ca.crt \
 --peerAddresses peer0.cohuong.thesis.com:9051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/cohuong.thesis.com/peers/peer0.cohuong.thesis.com/tls/ca.crt \
--c '{"Args":["registerUser","dongok1@gmail.com","123456","le quang duy minh","07/06/1995"]}' 
+-c '{"Args":["addSpendingUser","kok@gmail.com","cuoi quyen","1","cuoi quyen","cuoi quyen","cuoi quyen"]}' 
 
 peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"function": "queryUser","Args":["@gmail.com"]}' | jq .
 
@@ -113,6 +117,6 @@ peer chaincode invoke -o orderer.thesis.com:7050 \
 -C $CHANNEL_NAME -n ${CC_NAME} \
 --peerAddresses peer0.thayson.thesis.com:7051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/thayson.thesis.com/peers/peer0.thayson.thesis.com/tls/ca.crt \
 --peerAddresses peer0.cohuong.thesis.com:9051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/cohuong.thesis.com/peers/peer0.cohuong.thesis.com/tls/ca.crt \
--c '{"Args":["changePassword","dongok@gmail","cuoi quyen"]}' 
+-c '{"Args":["changePassword","kok@gmail.com","cuoi quyen"]}' 
 
 docker exec -it artifacts_api_1 sh

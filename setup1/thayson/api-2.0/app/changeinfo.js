@@ -71,7 +71,6 @@ const invokeTransaction = async (channelName, chaincodeName, fcn, username, ngay
             ngaysinh,
             name,
         )
-        result = JSON.parse(result.toString());
         await gateway.disconnect();
 
         return result;

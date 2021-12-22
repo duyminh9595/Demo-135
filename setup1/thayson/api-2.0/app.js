@@ -58,7 +58,7 @@ app.set('secret', 'thisismysecret');
 app.use(expressJWT({
     secret: 'thisismysecret'
 }).unless({
-    path: ['/users', '/users/login', '/register/']
+    path: ['/users', '/login', '/register/']
 }));
 app.use(bearerToken());
 
@@ -424,7 +424,7 @@ app.post('/api/addusertarget', async function (req, res) {
 })
 
 //see  user target
-app.post('/api/seeallusertarget', async function (req, res) {
+app.get('/api/seeallusertarget', async function (req, res) {
     const username = req.username
     logger.debug('End point : /api/seeallusertarget');
     logger.debug('User name : ' + username);
