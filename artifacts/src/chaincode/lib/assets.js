@@ -100,7 +100,7 @@ class Cs01Contract extends Contract {
 
       // compose the return values
       return {
-        key: _keyYearAsString + '~' + _keyMonthAsString + '~' + _keyDateAsString + '~' + this.TxId
+        key: this.TxId
       };
     }
     catch (e) {
@@ -109,10 +109,10 @@ class Cs01Contract extends Contract {
   }
   //add spending
   async addSpendingUser(ctx, email, spend_name, amount, currency, rate_currency, id_spending) {
-    // const userAsBytes = await ctx.stub.getState(email);
-    // if (!userAsBytes || userAsBytes.length === 0) {
-    //   throw new Error(`${userAsBytes} does not exist`);
-    // }
+    const userAsBytes = await ctx.stub.getState(email);
+    if (!userAsBytes || userAsBytes.length === 0) {
+      throw new Error(`${userAsBytes} does not exist`);
+    }
     let _keyHelper = new Date();
     const userSpending = {
       email,
@@ -134,7 +134,7 @@ class Cs01Contract extends Contract {
 
       // compose the return values
       return {
-        key: _keyYearAsString + '~' + _keyMonthAsString + '~' + _keyDateAsString + '~' + this.TxId
+        key: this.TxId
       };
     }
     catch (e) {
@@ -227,7 +227,7 @@ class Cs01Contract extends Contract {
 
       // compose the return values
       return {
-        key: _keyYearAsString + '~' + _keyMonthAsString + '~' + _keyDateAsString + '~' + this.TxId
+        key: this.TxId
       };
     }
     catch (e) {

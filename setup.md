@@ -7,7 +7,7 @@ docker network prune
 cohuong: 34.67.248.87
 thayson orderer: dm org 35.224.10.90
 docker swarm init --advertise-addr 35.224.10.90
-docker swarm join --token SWMTKN-1-482yz1rl6q74nkomtqtb9v0zn3tlrj976rus42y5arl5mkjtzb-cqcdvjvzp0tzbbulbow9kprnc 35.224.10.90:2377 --advertise-addr 34.67.248.87
+docker swarm join --token SWMTKN-1-57wujrcn5r8x8ykcmjq52km4j1cqg7xnvb4akt28eoizxkk756-8ryelktozdxe9535e8rir11y4 35.224.10.90:2377 --advertise-addr 34.67.248.87
 docker network create --attachable --driver overlay artifacts_thesis
 
 # remove ca
@@ -116,9 +116,9 @@ peer chaincode invoke -o orderer.thesis.com:7050 \
 -C $CHANNEL_NAME -n ${CC_NAME} \
 --peerAddresses peer0.thayson.thesis.com:7051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/thayson.thesis.com/peers/peer0.thayson.thesis.com/tls/ca.crt \
 --peerAddresses peer0.cohuong.thesis.com:9051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/cohuong.thesis.com/peers/peer0.cohuong.thesis.com/tls/ca.crt \
--c '{"Args":["addSpendingUser","duyminh95@gmail.com","123456","le quang duy minh","07/06/1995","duyminh95@gmail.com","duyminh95@gmail.com"]}'
+-c '{"Args":["addIncomeUser","duyminh95@gmail.com","OK1","45000","VND","1","1"]}' 
 
-peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"function": "queryUser","Args":["@gmail.com"]}' | jq .
+peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"function": "queryUser","Args":["duyminh95@gmail.com"]}' | jq .
 
 peer chaincode invoke -o orderer.thesis.com:7050 \
 --ordererTLSHostnameOverride orderer.thesis.com \
