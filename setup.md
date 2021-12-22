@@ -7,7 +7,7 @@ docker network prune
 cohuong: 34.67.248.87
 thayson orderer: dm org 35.224.10.90
 docker swarm init --advertise-addr 35.224.10.90
-docker swarm join --token SWMTKN-1-5iqejn0pljepqngxo0bykum0via9tmcvqsm2ekitl2jntnyiyr-2mxbdiwq72mz8lmo5sfck6lm6 35.224.10.90:2377 --advertise-addr 34.67.248.87
+docker swarm join --token SWMTKN-1-482yz1rl6q74nkomtqtb9v0zn3tlrj976rus42y5arl5mkjtzb-cqcdvjvzp0tzbbulbow9kprnc 35.224.10.90:2377 --advertise-addr 34.67.248.87
 docker network create --attachable --driver overlay artifacts_thesis
 
 # remove ca
@@ -89,7 +89,16 @@ peer chaincode invoke -o orderer.thesis.com:7050 \
 -C $CHANNEL_NAME -n ${CC_NAME} \
 --peerAddresses peer0.thayson.thesis.com:7051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/thayson.thesis.com/peers/peer0.thayson.thesis.com/tls/ca.crt \
 --peerAddresses peer0.cohuong.thesis.com:9051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/cohuong.thesis.com/peers/peer0.cohuong.thesis.com/tls/ca.crt \
---isInit -c '{"Args":["registerUser","@gmail.com","123456","le quang duy minh","07/06/1995"]}' --isInit
+--isInit -c '{"Args":["registerUser","duyminh@gmail.com","123456","le quang duy minh","07/06/1995"]}' --isInit
+
+
+peer chaincode invoke -o orderer.thesis.com:7050 \
+--ordererTLSHostnameOverride orderer.thesis.com \
+--tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA \
+-C $CHANNEL_NAME -n ${CC_NAME} \
+--peerAddresses peer0.thayson.thesis.com:7051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/thayson.thesis.com/peers/peer0.thayson.thesis.com/tls/ca.crt \
+--peerAddresses peer0.cohuong.thesis.com:9051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/cohuong.thesis.com/peers/peer0.cohuong.thesis.com/tls/ca.crt \
+-c '{"Args":["registerUser","duyminh95@gmail.com","123456","le quang duy minh","07/06/1995"]}'
 
 peer chaincode invoke -o orderer.thesis.com:7050 \
 --ordererTLSHostnameOverride orderer.thesis.com \
@@ -107,7 +116,7 @@ peer chaincode invoke -o orderer.thesis.com:7050 \
 -C $CHANNEL_NAME -n ${CC_NAME} \
 --peerAddresses peer0.thayson.thesis.com:7051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/thayson.thesis.com/peers/peer0.thayson.thesis.com/tls/ca.crt \
 --peerAddresses peer0.cohuong.thesis.com:9051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/cohuong.thesis.com/peers/peer0.cohuong.thesis.com/tls/ca.crt \
--c '{"Args":["addSpendingUser","kok@gmail.com","cuoi quyen","1","cuoi quyen","cuoi quyen","cuoi quyen"]}' 
+-c '{"Args":["addSpendingUser","duyminh95@gmail.com","123456","le quang duy minh","07/06/1995","duyminh95@gmail.com","duyminh95@gmail.com"]}'
 
 peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"function": "queryUser","Args":["@gmail.com"]}' | jq .
 
@@ -117,6 +126,7 @@ peer chaincode invoke -o orderer.thesis.com:7050 \
 -C $CHANNEL_NAME -n ${CC_NAME} \
 --peerAddresses peer0.thayson.thesis.com:7051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/thayson.thesis.com/peers/peer0.thayson.thesis.com/tls/ca.crt \
 --peerAddresses peer0.cohuong.thesis.com:9051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/cohuong.thesis.com/peers/peer0.cohuong.thesis.com/tls/ca.crt \
--c '{"Args":["changePassword","kok@gmail.com","cuoi quyen"]}' 
+-c '{"function": "changePassword","Args":["666666", "Audi", "R8", "Red", "Sandip"]}'
+-c  "function": "createCar"'{"Args":["changePassword","kok@gmail.com","cuoi quyen"]}' 
 
 docker exec -it artifacts_api_1 sh

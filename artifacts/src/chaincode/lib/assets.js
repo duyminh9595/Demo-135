@@ -92,16 +92,7 @@ class Cs01Contract extends Contract {
     };
     try {
 
-      // store the composite key with a the value
-      let indexName = 'year~month~date~txid'
-
-
-      let _keyYearAsString = _keyHelper.getFullYear().toString()
-      let _keyMonthAsString = _keyHelper.getMonth().toString()
-      let _keyDateAsString = _keyHelper.getDate().toString();
-
-      let yearMonthIndexKey = await ctx.stub.createCompositeKey(indexName, [_keyYearAsString, _keyMonthAsString, _keyDateAsString, this.TxId]);
-      await ctx.stub.putState(yearMonthIndexKey, Buffer.from(JSON.stringify(userIncome)));
+      await ctx.stub.putState(this.TxId, Buffer.from(JSON.stringify(userIncome)));
       const userBalance = JSON.parse(userAsBytes.toString());
       userBalance.balance = parseInt(userBalance.balance, 10) + parseInt(amount, 10) * parseInt(rate_currency, 10);
       await ctx.stub.putState(email, Buffer.from(JSON.stringify(userBalance)));
@@ -135,20 +126,10 @@ class Cs01Contract extends Contract {
       type: 'add'
     };
     try {
-
-      // store the composite key with a the value
-      let indexName = 'year~month~date~txid'
-
-
-      let _keyYearAsString = _keyHelper.getFullYear().toString()
-      let _keyMonthAsString = _keyHelper.getMonth().toString()
-      let _keyDateAsString = _keyHelper.getDate().toString();
-
-      let yearMonthIndexKey = await ctx.stub.createCompositeKey(indexName, [_keyYearAsString, _keyMonthAsString, _keyDateAsString, this.TxId]);
-      await ctx.stub.putState(yearMonthIndexKey, Buffer.from(JSON.stringify(userSpending)));
-      // const userBalance = JSON.parse(userAsBytes.toString());
-      // userBalance.balance = parseInt(userBalance.balance, 10) - parseInt(amount, 10) * parseInt(rate_currency, 10);
-      // await ctx.stub.putState(email, Buffer.from(JSON.stringify(userBalance)));
+      await ctx.stub.putState(this.TxId, Buffer.from(JSON.stringify(userSpending)));
+      const userBalance = JSON.parse(userAsBytes.toString());
+      userBalance.balance = parseInt(userBalance.balance, 10) - parseInt(amount, 10) * parseInt(rate_currency, 10);
+      await ctx.stub.putState(email, Buffer.from(JSON.stringify(userBalance)));
       console.info('============= END : change Balance User ===========');
 
       // compose the return values
@@ -232,25 +213,12 @@ class Cs01Contract extends Contract {
     };
     try {
 
-      // store the composite key with a the value
-      let indexName = 'year~month~date~txid'
-
-
-      let _keyYearAsString = _keyHelper.getFullYear().toString()
-      let _keyMonthAsString = _keyHelper.getMonth().toString()
-      let _keyDateAsString = _keyHelper.getDate().toString();
-
-      let yearMonthIndexKey = await ctx.stub.createCompositeKey(indexName, [_keyYearAsString, _keyMonthAsString, _keyDateAsString, this.TxId]);
-
-
-
-
-      await ctx.stub.putState(yearMonthIndexKey, Buffer.from(JSON.stringify(userAddAmountTarget)));
-
       const targetUserAsBytes = await ctx.stub.getState(id_target);
       if (!targetUserAsBytes || targetUserAsBytes.length === 0) {
         throw new Error(`${targetUserAsBytes} does not exist`);
       }
+
+      await ctx.stub.putState(this.TxId, Buffer.from(JSON.stringify(userAddAmountTarget)));
       const targetUser = JSON.parse(targetUserAsBytes.toString());
       targetUser.current_balance = targetUser.current_balance + amount * rate_currency;
       await ctx.stub.putState(id_target, Buffer.from(JSON.stringify(targetUser)));
