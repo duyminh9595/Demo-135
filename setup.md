@@ -4,9 +4,9 @@ docker rm -vf $(docker ps -aq) && docker volume prune -f
 docker network prune
 rm -r -f /home/ubuntu/Demo-135
 # docker swarm
-cohuong: 34.67.248.87
-thayson orderer: dm org 35.224.10.90
-docker swarm init --advertise-addr 35.224.10.90
+cohuong: 35.224.10.90
+thayson orderer: dm org 34.67.248.87
+docker swarm init --advertise-addr 34.67.248.87
 docker swarm join --token SWMTKN-1-4p7y8l7j1kweme2zt7c8iat0st44tiub9rbimvd2ovbg4976q7-73j8aek6p4ckb7f8q2mvp0vdw 35.224.10.90:2377 --advertise-addr 34.67.248.87
 docker network create --attachable --driver overlay artifacts_thesis
 
