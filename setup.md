@@ -7,7 +7,7 @@ rm -r -f /home/ubuntu/Demo-135
 cohuong: 35.224.10.90
 thayson orderer: dm org 34.67.248.87
 docker swarm init --advertise-addr 34.67.248.87
-docker swarm join --token SWMTKN-1-4p7y8l7j1kweme2zt7c8iat0st44tiub9rbimvd2ovbg4976q7-73j8aek6p4ckb7f8q2mvp0vdw 35.224.10.90:2377 --advertise-addr 34.67.248.87
+docker swarm join --token SWMTKN-1-3o12nteh797bjmld5k9q7jahj5xmsnfo31pdv50k0xiocnt1b6-4grmq0yg45g5oli1bxmgeq8sd 34.67.248.87:2377 --advertise-addr 35.224.10.90
 docker network create --attachable --driver overlay artifacts_thesis
 
 # remove ca
@@ -27,7 +27,7 @@ git commit -m "D"
 git push origin
 git clone https://github.com/duyminh9595/Demo-135.git
 duyminh95@gmail.com
-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
+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
 
 # tạo ca
 cd /home/ubuntu/Demo-135/setup1/thayson/create-certificate-with-ca/
@@ -143,3 +143,7 @@ peer chaincode invoke -o orderer.thesis.com:7050 \
 -c  "function": "createCar"'{"Args":["changePassword","kok@gmail.com","cuoi quyen"]}' 
 
 docker exec -it artifacts_api_1 sh
+
+wget https://raw.githubusercontent.com/hyperledger/blockchain-explorer/main/examples/net1/config.json
+wget https://raw.githubusercontent.com/hyperledger/blockchain-explorer/main/examples/net1/connection-profile/test-network.json -P connection-profile
+wget https://raw.githubusercontent.com/hyperledger/blockchain-explorer/main/docker-compose.yaml
