@@ -92,7 +92,6 @@ peer lifecycle chaincode commit -o orderer.thesis.com:7050 --ordererTLSHostnameO
 --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA \
 --channelID $CHANNEL_NAME --name ${CC_NAME} \
 --peerAddresses peer0.thayson.thesis.com:7051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/thayson.thesis.com/peers/peer0.thayson.thesis.com/tls/ca.crt \
---peerAddresses peer0.cohuong.thesis.com:9051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/cohuong.thesis.com/peers/peer0.cohuong.thesis.com/tls/ca.crt \
 --version ${VERSION} --sequence ${VERSION} --init-required
 
 
@@ -101,7 +100,6 @@ peer chaincode invoke -o orderer.thesis.com:7050 \
 --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA \
 -C $CHANNEL_NAME -n ${CC_NAME} \
 --peerAddresses peer0.thayson.thesis.com:7051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/thayson.thesis.com/peers/peer0.thayson.thesis.com/tls/ca.crt \
---peerAddresses peer0.cohuong.thesis.com:9051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/cohuong.thesis.com/peers/peer0.cohuong.thesis.com/tls/ca.crt \
 --isInit -c '{"Args":["registerUser","@gmail.com","123456","le quang duy minh","07/06/1995"]}' --isInit
 
 
@@ -110,7 +108,6 @@ peer chaincode invoke -o orderer.thesis.com:7050 \
 --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA \
 -C $CHANNEL_NAME -n ${CC_NAME} \
 --peerAddresses peer0.thayson.thesis.com:7051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/thayson.thesis.com/peers/peer0.thayson.thesis.com/tls/ca.crt \
---peerAddresses peer0.cohuong.thesis.com:9051 --tlsRootCertFiles /etc/hyperledger/channel/crypto-config/peerOrganizations/cohuong.thesis.com/peers/peer0.cohuong.thesis.com/tls/ca.crt \
 -c '{"Args":["registerUser","duyminh95@gmail.com","123456","le quang duy minh","07/06/1995"]}'
 
 peer chaincode invoke -o orderer.thesis.com:7050 \

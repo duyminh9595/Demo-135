@@ -1,0 +1,45 @@
+2022-01-01 14:29:57 +0000 [info]: reading config file path="/fluentd/etc/fluentd.conf"
+2022-01-01 14:29:57 +0000 [info]: starting fluentd-0.12.16
+2022-01-01 14:29:57 +0000 [info]: gem 'fluentd' version '0.12.16'
+2022-01-01 14:29:57 +0000 [info]: adding match pattern="debug.*" type="stdout"
+2022-01-01 14:29:57 +0000 [info]: adding source type="forward"
+2022-01-01 14:29:57 +0000 [info]: adding source type="http"
+2022-01-01 14:29:57 +0000 [info]: adding source type="monitor_agent"
+2022-01-01 14:29:57 +0000 [info]: adding source type="debug_agent"
+2022-01-01 14:29:57 +0000 [info]: using configuration file: <ROOT>
+  <source>
+    type forward
+    port 24224
+  </source>
+  <source>
+    type http
+    port 9880
+  </source>
+  <source>
+    type monitor_agent
+    port 24220
+  </source>
+  <source>
+    type debug_agent
+    port 24230
+  </source>
+  <match debug.*>
+    type stdout
+  </match>
+</ROOT>
+2022-01-01 14:29:57 +0000 [info]: listening fluent socket on 0.0.0.0:24224
+2022-01-01 14:29:57 +0000 [info]: listening dRuby uri="druby://0.0.0.0:24230" object="Engine"
+2022-01-01 14:29:58 +0000 [warn]: no patterns matched tag="docker.4db8fee4bbd9"
+2022-01-01 14:29:58 +0000 [warn]: no patterns matched tag="docker.4db8fee4bbd9"
+2022-01-01 14:29:58 +0000 [warn]: no patterns matched tag="docker.4db8fee4bbd9"
+2022-01-01 14:29:58 +0000 [warn]: no patterns matched tag="docker.4db8fee4bbd9"
+2022-01-01 14:29:58 +0000 [warn]: no patterns matched tag="docker.c7f766fb0df0"
+2022-01-01 14:29:58 +0000 [warn]: no patterns matched tag="docker.c7f766fb0df0"
+2022-01-01 14:29:58 +0000 [warn]: no patterns matched tag="docker.4db8fee4bbd9"
+2022-01-01 14:29:59 +0000 [warn]: no patterns matched tag="docker.4db8fee4bbd9"
+2022-01-01 14:30:00 +0000 [warn]: no patterns matched tag="docker.4db8fee4bbd9"
+2022-01-01 14:30:04 +0000 [warn]: no patterns matched tag="docker.4db8fee4bbd9"
+2022-01-01 14:30:12 +0000 [warn]: no patterns matched tag="docker.4db8fee4bbd9"
+2022-01-01 14:30:19 +0000 [warn]: no patterns matched tag="docker.4db8fee4bbd9"
+2022-01-01 14:30:22 +0000 [info]: shutting down fluentd
+2022-01-01 14:30:22 +0000 [info]: process finished code=0
